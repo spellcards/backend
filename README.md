@@ -23,12 +23,12 @@ Returns:
         {
             assignment_id: 1,
             assignment_name: "Colours",
-            due_date: "30-10-2021"
+            due_date: 1625626376
         },        
         {
             assignment_id: 2,
             assignment_name: "Numbers 1",
-            due_date: "30-10-2021"
+            due_date: 1625626376
         },
     ]
 }
