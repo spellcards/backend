@@ -12,11 +12,10 @@ Lambda backend to serve spaced repition logic to spellcard game. Authentication 
 Takes: 
 
 - Authorization token in header.
-- student_id in params.
 
 Returns:
 
-- Array of active assignment ids and names and due dates.
+- Array of active assignment ids it's name and due date.
 
 ```json
 {
@@ -40,7 +39,6 @@ Returns:
  Takes:
 
 - Authorization token in header.
-- student_id in params.
 - assignment_id in params.
 
 Returns:
@@ -73,8 +71,7 @@ Returns:
 Takes:
 
 - Authorization token in header.
-- student_id in body.
-- Array of words in body with:
+- Array of words to be updated in body with:
   - word_id (words id)
   - updated word_strength (new level)
   - last_seen (current date)
