@@ -13,7 +13,7 @@ exports.handler = async event => {
     console.log('event: ', event);
 
     // get username
-    let student_name = "Hi";
+    let student_name = "jgon100";
 
     mysql
       .createConnection({

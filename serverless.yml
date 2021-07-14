@@ -11,11 +11,11 @@ provider:
 
 functions:
   preSignUp:
-    handler: lambdas/preSignUp.handler
+    handler: lambdas/PostConfirmation.handler
     events:
       - cognitoUserPool:
-          pool: MyUserPool
-          trigger: PreSignUp
+          pool: spellcards-userpool-dev
+          trigger: PostConfirmation
   getUserAssignments:
     handler: lambdas/getUserAssignments.handler
     events:
