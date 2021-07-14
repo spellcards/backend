@@ -9,35 +9,13 @@ provider:
   stage: dev
   region: ap-southeast-2
 
-  # you can add statements to the Lambda function's IAM Role here
-  #  iamRoleStatements:
-  #    - Effect: "Allow"
-  #      Action:
-  #        - "s3:ListBucket"
-  #      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-  #    - Effect: "Allow"
-  #      Action:
-  #        - "s3:PutObject"
-  #      Resource:
-  #        Fn::Join:
-  #          - ""
-  #          - - "arn:aws:s3:::"
-  #            - "Ref" : "ServerlessDeploymentBucket"
-  #            - "/*"
-
-  # you can define service wide environment variables here
-  #  environment:
-  #    variable1: value1
-
-  # you can add packaging information here
-  #package:
-  #  patterns:
-  #    - '!exclude-me.js'
-  #    - '!exclude-me-dir/**'
-  #    - include-me.js
-  #    - include-me-dir/**
-
 functions:
+  preSignUp:
+    handler: lambdas/preSignUp.handler
+    events:
+      - cognitoUserPool:
+          pool: MyUserPool
+          trigger: PreSignUp
   getUserAssignments:
     handler: lambdas/getUserAssignments.handler
     events:
