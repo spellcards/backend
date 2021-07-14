@@ -10,7 +10,7 @@ let database_name = "";
 
 
 exports.handler = async (event, context, callback) => {
-  console.log('event: ', event);
+  console.log('event!: ', event);
 
   // get username
   let student_name = event.userName;
@@ -32,6 +32,8 @@ exports.handler = async (event, context, callback) => {
     })
     .then(([rows, fields]) => console.log(rows))
     .catch((err) => console.log(err));
+
+    console.log(event.request.userAttributes)
 
     callback(null, event);
 };

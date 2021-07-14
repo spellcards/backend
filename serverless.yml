@@ -10,12 +10,12 @@ provider:
   region: ap-southeast-2
 
 functions:
-  preSignUp:
-    handler: lambdas/preSignUp.handler
-    events:
-      - cognitoUserPool:
-          pool: spellcards-userpool-dev
-          trigger: PreSignUp
+  # preSignUp:
+  #   handler: lambdas/preSignUp.handler
+  #   events:
+  #     - cognitoUserPool:
+  #         pool: spellcards-student-pool
+  #         trigger: PreSignUp
   getUserAssignments:
     handler: lambdas/getUserAssignments.handler
     events:
@@ -33,13 +33,17 @@ resources:
     CognitoUserPool:
       Type: AWS::Cognito::UserPool
       Properties:
-        UserPoolName: spellcards-userpool-dev
+        UserPoolName: spellcards-student-pool
         AutoVerifiedAttributes:
           - email
+        Schema:
+          - Name: student_id
+            AttributeDataType: Number
+            Mutable: true
     CognitoUserPoolClient:
       Type: AWS::Cognito::UserPoolClient
       Properties:
-          ClientName: L7-userpool-dev-client
+          ClientName: spellcards-student-pool-client
           UserPoolId:
             Ref: CognitoUserPool
           ExplicitAuthFlows:
@@ -58,7 +62,7 @@ resources:
       Type: AWS::ApiGateway::Authorizer
       Properties: 
         IdentitySource: method.request.header.authorization
-        Name: PricerAuthorizer
+        Name: StudentAuthorizer
         ProviderARNs: 
           - Fn::GetAtt:
             - CognitoUserPool
