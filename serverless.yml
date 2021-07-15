@@ -17,10 +17,10 @@ functions:
   #         pool: spellcards-student-pool
   #         trigger: PreSignUp
   getUserAssignments:
-    handler: lambdas/getUserAssignments.handler
+    handler: lambdas/API_student/getUserAssignments.handler
     events:
       - http:
-          path: getUserAssignments/{student_id}
+          path: getUserAssignments
           method: GET
           cors: true
           authorizer:
